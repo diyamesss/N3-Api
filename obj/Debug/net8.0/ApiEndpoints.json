@@ -19,7 +19,7 @@
     "Parameters": [
       {
         "Name": "auditExceptionModel",
-        "Type": "EntryApi.Models.AuditExceptionModel",
+        "Type": "EntryApi.Models.AuditExceptionDto",
         "IsRequired": true
       }
     ],
