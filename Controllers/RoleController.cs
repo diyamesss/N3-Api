@@ -30,7 +30,7 @@ namespace EntryApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddRole(RoleModel roleModel)
+        public async Task<IActionResult> AddRole(RoleDto roleModel)
         {
             try
             {

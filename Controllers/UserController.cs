@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EntryApi.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
+using EntryApi.Services.Interface;
+using EntryApi.Services.Implementation;
 
 namespace EntryApi.Controllers
 {
@@ -12,9 +14,12 @@ namespace EntryApi.Controllers
     public class UserController : ControllerBase
     {
         private readonly DbEntryContext _dbEntryContext;
-        public UserController(DbEntryContext dbEntryContext)
+        private readonly IUserService _userService;
+
+        public UserController(DbEntryContext dbEntryContext, IUserService userService)
         {
             _dbEntryContext = dbEntryContext;
+            _userService = userService;
         }
 
         [HttpGet]
@@ -42,7 +47,7 @@ namespace EntryApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> InsertUser(UserModel userModel)
+        public async Task<IActionResult> InsertUser(UserDto userModel)
         {
             try
             {
@@ -57,9 +62,7 @@ namespace EntryApi.Controllers
                     CreatedBy = userModel.CreatedBy,
                     DateCreated = DateTime.Now
                 };
-                _dbEntryContext.Users.Add(user);
-                await _dbEntryContext.SaveChangesAsync();
-                return Ok(user.UserId);
+                return Ok(await _userService.InsertUser(user));
             }
             catch (Exception)
             {
@@ -69,11 +72,11 @@ namespace EntryApi.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateUser(UserModel userModel)
+        public async Task<IActionResult> UpdateUser(UserDto userModel)
         {
             try
             {
-                User user = await _dbEntryContext.Users.Where(u => u.UserId == userModel.UserId).SingleAsync();
+                User user = await _userService.GetUserById(userModel.UserId);
                 if (user != null)
                 {
                     user.Password = userModel.Password;
@@ -82,8 +85,7 @@ namespace EntryApi.Controllers
                     user.LastName = userModel.LastName;
                     user.UpdatedBy = userModel.UpdatedBy;
                     user.DateUpdated = DateTime.UtcNow;
-                    await _dbEntryContext.SaveChangesAsync();
-                    return Ok(user);
+                    return Ok(await _userService.UpdateUser(user));
                 }
                 else
                     return NotFound("User not found");
@@ -94,12 +96,12 @@ namespace EntryApi.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpPatch]
         public async Task<IActionResult> DeleteUser(int userId)
         {
             try
             {
-                User user = await _dbEntryContext.Users.Where(u => u.UserId == userId).SingleAsync();
+                User user = await _userService.GetUserById(userId);
                 if (user != null)
                 {
                     user.IsDeleted = true;

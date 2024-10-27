@@ -4462,9 +4462,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cunan\\OneDrive\\Documents\\Development\\C# Project\\EntryApi\\EntryApi\\EntryApi.csproj",
-      "projectName": "EntryApi",
-      "projectPath": "C:\\Users\\cunan\\OneDrive\\Documents\\Development\\C# Project\\EntryApi\\EntryApi\\EntryApi.csproj",
+      "projectUniqueName": "C:\\Users\\cunan\\OneDrive\\Documents\\Development\\C# Project\\EntryApi\\EntryApi\\N3Api.csproj",
+      "projectName": "N3Api",
+      "projectPath": "C:\\Users\\cunan\\OneDrive\\Documents\\Development\\C# Project\\EntryApi\\EntryApi\\N3Api.csproj",
       "packagesPath": "C:\\Users\\cunan\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\cunan\\OneDrive\\Documents\\Development\\C# Project\\EntryApi\\EntryApi\\obj\\",
       "projectStyle": "PackageReference",

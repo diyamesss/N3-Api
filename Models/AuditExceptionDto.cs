@@ -1,12 +1,10 @@
 ﻿namespace EntryApi.Models
 {
-    public class StatusModel
+    public class AuditExceptionDto
     {
-        public long StatusId { get; set; }
+        public long AuditExceptionId { get; set; }
 
-        public string StatusName { get; set; } = null!;
-
-        public string? StatusDescription { get; set; }
+        public string AuditExceptionName { get; set; } = null!;
 
         public string CreatedBy { get; set; } = null!;
 

@@ -1,10 +1,12 @@
 ﻿namespace EntryApi.Models
 {
-    public class DepartmentModel
+    public class StatusDto
     {
-        public long DepartmentId { get; set; }
+        public long StatusId { get; set; }
 
-        public string DepartmentName { get; set; } = null!;
+        public string StatusName { get; set; } = null!;
+
+        public string? StatusDescription { get; set; }
 
         public string CreatedBy { get; set; } = null!;
 

@@ -30,7 +30,7 @@ namespace EntryApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddAuditException(AuditExceptionModel auditExceptionModel)
+        public async Task<IActionResult> AddAuditException(AuditExceptionDto auditExceptionModel)
         {
             try
             {

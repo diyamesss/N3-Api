@@ -30,7 +30,7 @@ namespace EntryApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddDepartment(DepartmentModel departmentModel)
+        public async Task<IActionResult> AddDepartment(DepartmentDto departmentModel)
         {
             try
             {

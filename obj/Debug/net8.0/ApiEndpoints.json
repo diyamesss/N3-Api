@@ -45,7 +45,7 @@
     "Parameters": [
       {
         "Name": "departmentModel",
-        "Type": "EntryApi.Models.DepartmentModel",
+        "Type": "EntryApi.Models.DepartmentDto",
         "IsRequired": true
       }
     ],
@@ -71,7 +71,7 @@
     "Parameters": [
       {
         "Name": "entryModel",
-        "Type": "EntryApi.Models.EntryModel",
+        "Type": "EntryApi.Models.EntryDto",
         "IsRequired": true
       }
     ],
@@ -87,7 +87,7 @@
     "Parameters": [
       {
         "Name": "entryModel",
-        "Type": "EntryApi.Models.EntryModel",
+        "Type": "EntryApi.Models.EntryDto",
         "IsRequired": true
       }
     ],
@@ -161,7 +161,7 @@
     "Parameters": [
       {
         "Name": "roleModel",
-        "Type": "EntryApi.Models.RoleModel",
+        "Type": "EntryApi.Models.RoleDto",
         "IsRequired": true
       }
     ],
@@ -187,7 +187,7 @@
     "Parameters": [
       {
         "Name": "statusModel",
-        "Type": "EntryApi.Models.StatusModel",
+        "Type": "EntryApi.Models.StatusDto",
         "IsRequired": true
       }
     ],
@@ -224,7 +224,7 @@
     "Parameters": [
       {
         "Name": "userModel",
-        "Type": "EntryApi.Models.UserModel",
+        "Type": "EntryApi.Models.UserDto",
         "IsRequired": true
       }
     ],
@@ -240,7 +240,7 @@
     "Parameters": [
       {
         "Name": "userModel",
-        "Type": "EntryApi.Models.UserModel",
+        "Type": "EntryApi.Models.UserDto",
         "IsRequired": true
       }
     ],
@@ -250,7 +250,7 @@
     "ContainingType": "EntryApi.Controllers.UserController",
     "Method": "DeleteUser",
     "RelativePath": "api/User",
-    "HttpMethod": "DELETE",
+    "HttpMethod": "PATCH",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -261,26 +261,5 @@
       }
     ],
     "ReturnTypes": []
-  },
-  {
-    "ContainingType": "EntryApi.Controllers.WeatherForecastController",
-    "Method": "Get",
-    "RelativePath": "WeatherForecast",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[EntryApi.WeatherForecast, EntryApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ],
-    "EndpointName": "GetWeatherForecast"
   }
 ]

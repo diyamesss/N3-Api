@@ -1,10 +1,10 @@
 ﻿namespace EntryApi.Models
 {
-    public class RoleModel
+    public class DepartmentDto
     {
-        public long RoleId { get; set; }
+        public long DepartmentId { get; set; }
 
-        public string RoleName { get; set; } = null!;
+        public string DepartmentName { get; set; } = null!;
 
         public string CreatedBy { get; set; } = null!;
 

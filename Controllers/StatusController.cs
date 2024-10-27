@@ -30,7 +30,7 @@ namespace EntryApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddStatus(StatusModel statusModel)
+        public async Task<IActionResult> AddStatus(StatusDto statusModel)
         {
             try
             {

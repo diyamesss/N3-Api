@@ -1,6 +1,6 @@
 ﻿namespace EntryApi.Models;
 
-public partial class UserModel
+public partial class UserDto
 {
     public long UserId { get; set; }
 

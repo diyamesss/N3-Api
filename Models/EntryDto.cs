@@ -2,7 +2,7 @@
 
 namespace EntryApi.Models
 {
-    public partial class EntryModel
+    public partial class EntryDto
     {
         public long EntryId { get; set; }
 

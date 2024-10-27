@@ -41,7 +41,20 @@ namespace EntryApi.Controllers
         {
             try
             {
-                Entry entry = await _dbEntryContext.Entries.Where(e => e.EntryId.Equals(entryId)).SingleOrDefaultAsync();
+                var entry = await _dbEntryContext.Entries
+                    .Join(_dbEntryContext.Statuses,
+                    entry => entry.StatusId,
+                    status => status.StatusId,
+                    (entry, status) => new { entry, status })
+                    .Join(_dbEntryContext.AuditExceptions,
+                    entryAndStatus => entryAndStatus.entry.AuditExceptionId,
+                    audit => audit.AuditExceptionId,
+                    (entryAndStatus, audit) => new { entryAndStatus, audit })
+                    .Join(_dbEntryContext.Departments,
+                    entryStatusAudit => entryStatusAudit.entryAndStatus.entry.DepartmentId,
+                    department => department.DepartmentId,
+                    (entryStatusAudit, department) => new { entryStatusAudit, department })
+                    .Where(e => e.entryStatusAudit.entryAndStatus.entry.EntryId.Equals(entryId)).SingleOrDefaultAsync();
                 if (entry != null)
                     return Ok(entry);
                 else
@@ -109,7 +122,7 @@ namespace EntryApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> InsertEntry(EntryModel entryModel)
+        public async Task<IActionResult> InsertEntry(EntryDto entryModel)
         {
             try
             {
@@ -134,7 +147,7 @@ namespace EntryApi.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateEntry(EntryModel entryModel)
+        public async Task<IActionResult> UpdateEntry(EntryDto entryModel)
         {
             try
             {
